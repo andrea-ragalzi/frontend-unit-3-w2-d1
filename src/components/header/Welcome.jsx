@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 function Welcome() {
     return (
-        <Container fluid>
+        <Container fluid className='text-center'>
             <Row>
                 <Col xs={12} className='px-0'>
                     <div className="h-100 p-5 text-white bg-dark">

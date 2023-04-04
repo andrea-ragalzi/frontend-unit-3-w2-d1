@@ -3,8 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
-const ENDPOINT = process.env.ENDPOINT;
-const TOKEN = process.env.TOKEN;
+const ENDPOINT = process.env.REACT_APP_ENDPOINT;
+const TOKEN = process.env.REACT_APP_TOKEN;
 
 class AddComment extends Component {
     state = {
@@ -28,7 +28,7 @@ class AddComment extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            let response = await fetch(ENDPOINT, {
+            let response = await fetch(`${ENDPOINT}comments`, {
                 headers: {
                     "Authorization": `Bearer ${TOKEN}`,
                     "Content-Type": "application/json"
@@ -71,11 +71,11 @@ class AddComment extends Component {
                     this.handleRatingChange(event)
                 }}>
                     <option>Select the rate</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                    <option value="4">Four</option>
-                    <option value="5">Five</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
                 </Form.Select>
                 <Button variant="primary" type="submit" >
                     Submit

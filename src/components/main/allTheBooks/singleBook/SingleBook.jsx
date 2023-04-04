@@ -1,10 +1,9 @@
-import '../style/SingleBook.scss'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Component } from "react";
-import CommentArea from './CommentArea';
+import CommentArea from './commentArea/CommentArea';
 import AddComment from './AddComment';
 
 const truncateString = (str, num) => {
@@ -25,7 +24,7 @@ class SingleBook extends Component {
         return (
             selected ? (
                 <Col xs={12} className="p-0 mx-1 mb-5">
-                    <Row>
+                    <Row className='mx-5'>
                         <Col xs={6}>
                             <CommentArea asin={book.asin} selected={selected}></CommentArea>
                         </Col>
@@ -37,7 +36,7 @@ class SingleBook extends Component {
                                         <Card.Body>
                                             <Card.Title>{truncateString(book.title, 40)}</Card.Title>
                                             <Card.Text>{book.price}</Card.Text>
-                                            <Button variant="dark">Buy Now</Button>
+                                            <Button variant="success">Buy Now</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>

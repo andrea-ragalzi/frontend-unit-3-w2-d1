@@ -1,21 +1,13 @@
-import MyNav from './MyNav';
+import MyHeader from './header/MyHeader';
+import MyMain from './main/MyMain';
 import MyFooter from './MyFooter';
-import Welcome from './Welcome';
-import AllTheBooks from './AllTheBooks';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <MyNav />
-        <Welcome></Welcome>
-      </header>
-      <main>
-        <AllTheBooks className='all-the-books' />
-      </main>
-      <footer>
-        <MyFooter />
-      </footer>
+      <MyHeader />
+      <MyMain />
+      <MyFooter />
     </div>
   );
 }

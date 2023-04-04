@@ -1,8 +1,8 @@
 import { Component } from "react"
-import CommentsList from "./CommentsList";
+import CommentsList from "./commetsList/CommentsList";
 
-const ENDPOINT = process.env.ENDPOINT;
-const TOKEN = process.env.REACT_APP_CLIENT_ID;
+const ENDPOINT = process.env.REACT_APP_ENDPOINT;
+const TOKEN = process.env.REACT_APP_TOKEN;
 
 class CommentArea extends Component {
     state = {
@@ -10,14 +10,13 @@ class CommentArea extends Component {
     }
     getComments = async () => {
         try {
-            let response = await fetch(`${ENDPOINT}/comments/${this.props.asin}`, {
+            let response = await fetch(`${ENDPOINT}comments/${this.props.asin}`, {
                 headers: {
                     "Authorization": `Bearer ${TOKEN}`
                 }
             });
             if (response.ok) {
                 let data = await response.json()
-                console.log(data);
                 this.setState({
                     comments: data
                 })
@@ -35,13 +34,11 @@ class CommentArea extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.selected && !prevProps.selected) {
-            console.log('UPDATE');
             this.getComments();
         }
     }
 
     render() {
-        console.log(this.state.comments);
         return (
             this.props.selected && this.state.comments && (
                 <div className="comment-area">
