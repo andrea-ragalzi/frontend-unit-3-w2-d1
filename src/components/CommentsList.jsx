@@ -4,15 +4,16 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import SingleComment from "./SingleComment";
 
-const URL = 'https://striveschool-api.herokuapp.com/api/comments/';
+const ENDPOINT = process.env.ENDPOINT;
+const TOKEN = process.env.REACT_APP_CLIENT_ID;
 
 class CommentsList extends Component {
   handleClick = async (event) => {
     event.preventDefault();
     try {
-      let response = await fetch(`${URL}`, {
+      let response = await fetch(`${ENDPOINT}/comments`, {
         headers: {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE0M2QzMGY4MWI0MjAwMTM5YjI4NzMiLCJpYXQiOjE2ODA1MTc0MzAsImV4cCI6MTY4MTcyNzAzMH0.t8t6swOWjFD_2KZu7PvUPLE5FbU5K3yQ0LBrF_07sfs",
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json"
         },
         "method": "DELETE",

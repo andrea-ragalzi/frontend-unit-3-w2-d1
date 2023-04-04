@@ -1,7 +1,8 @@
 import { Component } from "react"
 import CommentsList from "./CommentsList";
 
-const URL = 'https://striveschool-api.herokuapp.com/api/comments/';
+const ENDPOINT = process.env.ENDPOINT;
+const TOKEN = process.env.REACT_APP_CLIENT_ID;
 
 class CommentArea extends Component {
     state = {
@@ -9,9 +10,9 @@ class CommentArea extends Component {
     }
     getComments = async () => {
         try {
-            let response = await fetch(`${URL}${this.props.asin}`, {
+            let response = await fetch(`${ENDPOINT}/comments/${this.props.asin}`, {
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE0M2QzMGY4MWI0MjAwMTM5YjI4NzMiLCJpYXQiOjE2ODA1MTc0MzAsImV4cCI6MTY4MTcyNzAzMH0.t8t6swOWjFD_2KZu7PvUPLE5FbU5K3yQ0LBrF_07sfs"
+                    "Authorization": `Bearer ${TOKEN}`
                 }
             });
             if (response.ok) {
@@ -27,7 +28,7 @@ class CommentArea extends Component {
             console.log(error);
         }
     }
-    
+
     componentDidMount() {
         this.getComments();
     }
